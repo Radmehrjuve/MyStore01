@@ -8,10 +8,11 @@ namespace MyStore01.WebUI.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-       
-       
-        public HomeController(ILogger<HomeController> logger )
+
+        IStoreRepository repository;
+        public HomeController(ILogger<HomeController> logger, IStoreRepository rep)
         {
+            repository = rep;   
             _logger = logger;
         }
       
@@ -28,7 +29,7 @@ namespace MyStore01.WebUI.Controllers
         [Authorize]
         public IActionResult Manufacturers()
         {
-            return View();
+            return View(repository.Products.OrderBy(p =>p.Id));
         }
         
 

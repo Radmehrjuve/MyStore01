@@ -10,5 +10,6 @@ namespace MyStore01.WebUI.Models.Users_Info
         public string Email { get; set; } = string.Empty;
         [Required]
         public string Password { get; set; } = string.Empty;
+
     }
 }

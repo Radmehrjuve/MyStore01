@@ -26,7 +26,7 @@ namespace MyStore01.WebUI.Controllers
         [Authorize]
         public IActionResult Manufacturers()
         {
-            return RedirectToAction("Login" , "Account");
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,13 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using MyStore01.WebUI.Models;
-
+using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 var connectionsstring = builder.Configuration.GetConnectionString("MyStoreConnectionString");
 builder.Services.AddDbContext<MyStoreContext>(opt => opt.UseSqlServer(connectionsstring));
+builder.Services.AddIdentity<Appuser, IdentityRole>(options => { options.Password.RequiredLength = 6; }).AddEntityFrameworkStores<MyStoreContext>();
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

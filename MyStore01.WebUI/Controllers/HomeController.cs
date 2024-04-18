@@ -13,7 +13,7 @@ namespace MyStore01.WebUI.Controllers
         {
             _logger = logger;
         }
-
+      
         public IActionResult Index()
         {
             return View();
@@ -26,7 +26,7 @@ namespace MyStore01.WebUI.Controllers
         [Authorize]
         public IActionResult Manufacturers()
         {
-            return View();
+            return RedirectToAction("Login" , "Account");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

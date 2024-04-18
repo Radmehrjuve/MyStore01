@@ -45,6 +45,8 @@ namespace MyStore01.WebUI.Controllers
                     await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
                 if(result.Succeeded)
                 {
+                    ViewBag.username = user.UserName;
+                    ViewBag.AddProductButton = true;
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -84,6 +86,7 @@ namespace MyStore01.WebUI.Controllers
                 context.SaveChanges();
 
                 ViewBag.username = model.Name;
+                ViewBag.AddProductButton = true;
                 return RedirectToAction("Index", "Home");
             }
            else

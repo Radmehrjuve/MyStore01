@@ -1,5 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model MyStore01.WebUI.Models.Users_Info.SignupModel
+<div class="bg-primary panel-body"><h4>Signing Up</h4></div>
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-action="Signup" method="post">
+<div class="form-group">
+    <label asp-for="Name">Name</label>
+    <input asp-for="Name" class="form-control" />
+</div>
+<div class="form-group">
+    <label asp-for="Email">Email</label>
+    <input asp-for="Email" class="form-control"/>
+</div>
+<div class="form-group">
+    <label asp-for="Password">Password</label>
+    <input asp-for="Password" class="form-control"/>
+</div>
+<div class="form-group">
+    <label asp-for="PhoneNumber">Phone Number</label>
+    <input asp-for="PhoneNumber" class="form-control"/>
+</div>
+<button type="submit" class="btn btn-primary">Create</button>
+<a asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>

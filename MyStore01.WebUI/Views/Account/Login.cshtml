@@ -1,5 +1,16 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model MyStore01.WebUI.Models.Users_Info.LoginModel
+<div><h4>Login</h4></div>
+<div asp-validation-summary="All"></div>
+<form asp-action="Login" method="post">
+    <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl"/>
+<div>
+    <label asp-for="Email"></label>
+    <input asp-for="Email"/>
+</div>
+<div>
+    <label asp-for="Password"></label>
+    <input asp-for="Password"/>
+</div>
+<button type="submit">Login</button>
+<a asp-action="Signup">Do not have an account? Signup</a>
+</form>

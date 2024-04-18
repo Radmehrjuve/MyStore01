@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyStore01.WebUI.Models;
 using System.Diagnostics;
@@ -19,6 +20,11 @@ namespace MyStore01.WebUI.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        [Authorize]
+        public IActionResult Manufacturers()
         {
             return View();
         }

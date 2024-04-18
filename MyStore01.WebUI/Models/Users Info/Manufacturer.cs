@@ -1,4 +1,5 @@
-﻿namespace MyStore01.WebUI.Models.Users_Info
+﻿using System.ComponentModel.DataAnnotations;
+namespace MyStore01.WebUI.Models.Users_Info
 {
     public class Manufacturer
     {

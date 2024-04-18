@@ -3,7 +3,6 @@ namespace MyStore01.WebUI.Models.Users_Info
 {
     public class Manufacturer
     {
-        [Key]
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string ManufactureEmail { get; set; } = string.Empty;

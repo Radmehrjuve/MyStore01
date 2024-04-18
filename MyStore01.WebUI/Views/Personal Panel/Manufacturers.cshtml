@@ -1,0 +1,12 @@
+﻿@model IQueryable<Product>
+@{
+    foreach (var pr in Model)
+    {
+        <div>    
+            <h3>@pr.Name</h3>
+            <h4>@pr.ManufactureEmail</h4>
+            <h4>@pr.ManufacturePhone</h4>
+            <h5>@pr.ProduceDate</h5>
+        </div>
+}
+}

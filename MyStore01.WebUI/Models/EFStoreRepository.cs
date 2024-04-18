@@ -7,6 +7,6 @@
         {
             context = cx;
         }
-        public IQueryable<Product> products => context.products;
+        public IQueryable<Product> products => context.Products;
     }
 }

@@ -22,33 +22,6 @@
     </div>
     <div style="display: inline-block;">
         <button type="submit" style="margin: 5px">Add</button>
-        <button type="submit" style="margin: 5px" asp-action="UpdateProduct">Update</button>
-        <button type="submit" style="margin: 5px" asp-action="DeleteProduct">Delete</button>
     </div>
 </form>
 
-<h3>Update</h3>
-<h4>Enter the value you want to change, if not leave it empty:</h4>
-<form  asp-action="UpdateProduct" method="post">
-    <div class="form-group">
-        <label asp-for="Name">Name:</label>
-        <input asp-for="Name" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="ManufacturePhone">Phone:</label>
-        <input asp-for="ManufacturePhone" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <label asp-for="IsAvailable">Availability:</label>
-        <input asp-for="IsAvailable" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <label asp-for="ProduceDate">Date:</label>
-        <input asp-for="ProduceDate" class="form-control"/>
-    </div>
-    <button type="submit">Update</button>
-</form>
- 
-        <h3>Delete</h3>
-        <h4>Enter the Name & Phone number of the product you want to delete: </h4>
-        

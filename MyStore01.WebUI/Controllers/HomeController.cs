@@ -23,7 +23,8 @@ namespace MyStore01.WebUI.Controllers
       
         public IActionResult Index()
         {
-            return View();
+            var list = context.products.ToList().AsQueryable<Product>();
+            return View(list);
         }
 
         public IActionResult Privacy()
@@ -53,13 +54,22 @@ namespace MyStore01.WebUI.Controllers
             {
                 return View();
             }
-            Product? pr = context.products.FirstOrDefault(p => p.ManufactureEmail == product.ManufactureEmail && p.ProduceDate == product.ProduceDate);
-                if(pr == null)
+            Product pr2 = new Product
             {
-                context.AddRange(product);
+                IsAvailable = product.IsAvailable,
+                ManufactureEmail = product.ManufactureEmail,
+                ManufacturePhone = product.ManufacturePhone,
+                Name = product.Name,
+                ProduceDate = product.ProduceDate
+            };
+            //Product? pr = context.products.FirstOrDefault(p => p.ManufactureEmail == product.ManufactureEmail && p.ProduceDate == product.ProduceDate);
+            //    if(pr == null)
+            //{
+                context.products.Add(pr2);
                 context.SaveChanges();
-                return RedirectToAction("~/Views/Personal Panel/AddProduct.cshtml",EFStore.products);
-            }
+                var list = context.products.Where(p => p.ManufactureEmail == pr2.ManufactureEmail).ToList().AsQueryable<Product>();
+                return View("~/Views/Personal Panel/Manufacturers.cshtml",list);
+            //}
             ModelState.AddModelError(nameof(product.ManufactureEmail),"We Already have a product with this email");
             ModelState.AddModelError(nameof(product.ProduceDate), "The Produce date is already used for another product");
             return View();
@@ -93,17 +103,23 @@ namespace MyStore01.WebUI.Controllers
             pr.IsAvailable = product.IsAvailable;
             
             context.SaveChanges();
-
-            return View("~/Views/Personal Panel/Manufacturers.cshtml",repository.Products);
+            var list = context.products.Where(p => p.ManufactureEmail == pr.ManufactureEmail).ToList().AsQueryable<Product>();
+            return View("~/Views/Personal Panel/Manufacturers.cshtml",list);
         }
-        [HttpPost]
-        public IActionResult DeleteProduct(Product product)
+        [HttpGet]
+        public IActionResult DeleteProduct(string Id)
         {
+            
+            int id = int.Parse(Id);
+            Product pr = context.products.FirstOrDefault(p => p.Id == id);
+            context.products.Remove(pr);
+            context.SaveChanges();
             if (!ModelState.IsValid) 
             {
-                return View("~/Views/Personal Panel/AddProduct.cshtml"); 
+                return View("~/Views/Personal Panel/Manufacturers.cshtml"); 
             }
-            return View();
+            var list = context.products.Where(p =>p.ManufactureEmail == pr.ManufactureEmail).ToList().AsQueryable<Product>();
+            return View("~/Views/Personal Panel/Manufacturers.cshtml",list);
         }
 
 

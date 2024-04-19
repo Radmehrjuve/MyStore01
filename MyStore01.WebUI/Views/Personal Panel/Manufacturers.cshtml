@@ -12,11 +12,13 @@
                
 
              <a asp-action="UpdateProduct" asp-route-id="@pr.Id">Update</a>
-              
-                <button type="submit" style="margin: 5px" >Delete</button>
+             <a asp-action="DeleteProduct" asp-route-id="@pr.Id">Delete</a>
+             <a asp-action="AddProduct" asp-route-id="@pr.Id">Add</a>
             </div>
         </div>
     }
+    
     </form>
     }
+    
 

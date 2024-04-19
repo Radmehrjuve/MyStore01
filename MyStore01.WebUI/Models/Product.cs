@@ -4,7 +4,7 @@ namespace MyStore01.WebUI.Models
 {
     public class Product
     {
-        [Key]
+        
         public int Id { get; set; }
         [Required]
         [UIHint("Name")]

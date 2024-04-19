@@ -65,8 +65,13 @@ namespace MyStore01.WebUI.Controllers
             return View();
 
         }
+        [HttpGet]
+        public IActionResult UpdateProduct()
+        {
+            return View();
+        }
         [HttpPost]
-        public async Task<IActionResult> UpdateProduct(Product product)
+        public IActionResult UpdateProduct(Product product)
         {
             var user = HttpContext.User;
             var useremail = user.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Email)?.Value;
@@ -82,26 +87,44 @@ namespace MyStore01.WebUI.Controllers
                 ModelState.AddModelError(nameof(product.ProduceDate), "There's no such a product in your profile with this info");
                     return View("~/Views/Personal Panel/AddProduct.cshtml");
             }
-         var properties = product.GetType().GetProperties();
-            foreach(var prop in properties)
+
+
+            /* var properties = product.GetType().GetProperties();
+                 foreach(var prop in properties)
+                 {
+                    var value = prop.GetValue(product);
+                     if(value != null)
+                     {
+                         var proptoupdate = prop.GetType().GetProperty(prop.Name);
+                         if(proptoupdate != null)
+                         {
+                             proptoupdate.SetValue(pr, value);
+                         }
+                     }
+
+                 }*/
+
+            if (!string.IsNullOrEmpty(product.ManufacturePhone))
             {
-               var value = prop.GetValue(product);
-                if(value != null)
-                {
-                    var proptoupdate = prop.GetType().GetProperty(prop.Name);
-                    if(proptoupdate != null)
-                    {
-                        proptoupdate.SetValue(pr, value);
-                    }
-                }
-                
+                pr.ManufacturePhone = product.ManufacturePhone;
             }
+
+            if (product.IsAvailable != null)
+            {
+                pr.IsAvailable = product.IsAvailable;
+            }
+
+            if (product.ProduceDate != default(DateTime))
+            {
+                pr.ProduceDate = product.ProduceDate;
+            }
+
             context.SaveChanges();
 
             return RedirectToAction("~/Views/Personal Panel/AddProduct.cshtml");
         }
         [HttpPost]
-        public IActionResult Delete(Product product)
+        public IActionResult DeleteProduct(Product product)
         {
             if (!ModelState.IsValid) 
             {

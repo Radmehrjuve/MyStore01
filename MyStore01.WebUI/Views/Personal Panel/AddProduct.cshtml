@@ -20,7 +20,11 @@
     <div>
      <input asp-for="ProduceDate" class="form-control" />
     </div>
-    <button type="submit">Add</button>
+    <div style="display: inline-block;">
+        <button type="submit" style="margin: 5px">Add</button>
+        <button type="submit" style="margin: 5px" asp-action="UpdateProduct">Update</button>
+        <button type="submit" style="margin: 5px" asp-action="DeleteProduct">Delete</button>
+    </div>
 </form>
 
 <h3>Update</h3>

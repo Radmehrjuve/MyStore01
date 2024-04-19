@@ -1,5 +1,27 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Product
+<h3>Update</h3>
+<h4>Enter the value you want to change, if not leave it empty:</h4>
+<form asp-action="UpdateProduct" method="post">
+    <div class="form-group">
+       
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input  />
+    </div>
+    <div class="form-group">
+        <label asp-for="ManufacturePhone" >Phone:</label>
+        <input asp-for="ManufacturePhone" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="IsAvailable">Availability:</label>
+        <input asp-for="IsAvailable" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ProduceDate">Date:</label>
+        <input asp-for="ProduceDate" class="form-control" />
+    </div>
+    <button type="submit">Update</button>
+</form>

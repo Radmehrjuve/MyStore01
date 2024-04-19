@@ -7,6 +7,13 @@
             <h4>@pr.ManufactureEmail</h4>
             <h4>@pr.ManufacturePhone</h4>
             <h5>@pr.ProduceDate</h5>
+            <div style="display: inline-block;">
+                <form asp-action="UpdateProduct" method="get">
+                <button type="submit" style="margin: 5px" >Update</button>
+            </form>
+                <form asp-action="DeleteProduct" method="get"></form>
+                <button type="submit" style="margin: 5px" >Delete</button>
+            </div>
         </div>
 }
 <form asp-action="AddProduct" method="get">

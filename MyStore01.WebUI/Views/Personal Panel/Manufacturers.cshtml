@@ -1,6 +1,7 @@
 ﻿@model IQueryable<Product>
 @{
-    foreach (var pr in Model)
+    <form asp-action="UpdateProduct" method="post">
+    @foreach (var pr in Model)
     {
         <div>    
             <h3>@pr.Name</h3>
@@ -8,15 +9,14 @@
             <h4>@pr.ManufacturePhone</h4>
             <h5>@pr.ProduceDate</h5>
             <div style="display: inline-block;">
-                <form asp-action="UpdateProduct" method="get">
-                <button type="submit" style="margin: 5px" >Update</button>
-            </form>
-                <form asp-action="DeleteProduct" method="get"></form>
+               
+
+             <a asp-action="UpdateProduct" asp-route-id="@pr.Id">Update</a>
+              
                 <button type="submit" style="margin: 5px" >Delete</button>
             </div>
         </div>
-}
-<form asp-action="AddProduct" method="get">
- <button type="submit">Add/Update Product</button>
+    }
     </form>
-}
+    }
+

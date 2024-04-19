@@ -45,7 +45,7 @@ namespace MyStore01.WebUI.Controllers
                     await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
                 if(result.Succeeded)
                 {
-                    return RedirectToAction("~/Views/Home/Index.cshtml");
+                    return Redirect("/");
                 }
             }
             ModelState.AddModelError(nameof(model.Email), "Invalid username or password");

@@ -5,7 +5,7 @@ namespace MyStore01.WebUI.Models
 {
     public class MyStoreContext : IdentityDbContext<Appuser>
     {
-        public DbSet<Product> Products => Set<Product>();
+        public DbSet<Product> products => Set<Product>();
         public DbSet<Manufacturer> manufacturer { get; set; }
 
         public MyStoreContext(DbContextOptions<MyStoreContext> options) : base(options)

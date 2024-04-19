@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyStore01.WebUI.Models;
 
@@ -11,9 +12,11 @@ using MyStore01.WebUI.Models;
 namespace MyStore01.WebUI.Migrations
 {
     [DbContext(typeof(MyStoreContext))]
-    partial class MyStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20240419065928_remake1")]
+    partial class remake1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

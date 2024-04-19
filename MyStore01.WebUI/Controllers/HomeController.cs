@@ -7,12 +7,14 @@ namespace MyStore01.WebUI.Controllers
 {
     public class HomeController : Controller
     {
+        public MyStoreContext context;
         private readonly ILogger<HomeController> _logger;
 
-        IStoreRepository repository;
-        public HomeController(ILogger<HomeController> logger, IStoreRepository rep)
+        public IStoreRepository repository;
+        public HomeController(ILogger<HomeController> logger, IStoreRepository rep,MyStoreContext cx)
         {
-            repository = rep;   
+            repository = rep;
+            context = cx;
             _logger = logger;
         }
       
@@ -26,11 +28,14 @@ namespace MyStore01.WebUI.Controllers
             return View();
         }
 
+
         [Authorize]
         public IActionResult Manufacturers()
         {
-            return View(repository.Products.OrderBy(p =>p.Id));
+            var products = context.products.ToArray().AsQueryable<Product>();
+            return View("~/Views/Personal Panel/Manufacturers.cshtml", products); 
         }
+        
         
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

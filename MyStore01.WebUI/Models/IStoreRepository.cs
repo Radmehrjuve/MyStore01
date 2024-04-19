@@ -2,6 +2,6 @@
 {
     public class IStoreRepository
     {
-        public IQueryable<Product> Products { get; set; }
+        public IQueryable<Product> Products { get; }
     }
 }

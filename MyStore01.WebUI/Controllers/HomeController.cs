@@ -13,11 +13,18 @@ namespace MyStore01.WebUI.Controllers
         private readonly ILogger<HomeController> _logger;
 
         public IStoreRepository repository;
-        public HomeController(ILogger<HomeController> logger, IStoreRepository rep,MyStoreContext cx,EFStoreRepository ef)
+        public HomeController(MyStoreContext cx, EFStoreRepository ef)
         {
             EFStore = ef;
-            repository = rep;
+            
             context = cx;
+        }
+        public HomeController(IStoreRepository repo)
+        {
+            repository = repo;
+        }
+        public HomeController(ILogger<HomeController> logger)
+        {
             _logger = logger;
         }
       

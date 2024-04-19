@@ -8,7 +8,8 @@ builder.Services.AddControllersWithViews();
 var connectionsstring = builder.Configuration.GetConnectionString("MyStoreConnectionString");
 builder.Services.AddDbContext<MyStoreContext>(opt => opt.UseSqlServer(connectionsstring));
 builder.Services.AddIdentity<Appuser, IdentityRole>(options => { options.Password.RequiredLength = 6; }).AddEntityFrameworkStores<MyStoreContext>();
-builder.Services.AddScoped<IStoreRepository, EFStoreRepository>();
+builder.Services.AddScoped<IStoreRepository>();
+builder.Services.AddScoped<EFStoreRepository>();
 var app = builder.Build();
 
 

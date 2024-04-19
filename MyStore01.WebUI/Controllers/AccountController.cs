@@ -34,7 +34,7 @@ namespace MyStore01.WebUI.Controllers
             {
                 return View();
             }
-            Appuser user = await _userManager.FindByEmailAsync(model.Email);
+            Appuser? user = await _userManager.FindByEmailAsync(model.Email);
             if(user == null)
             {
                 return View();

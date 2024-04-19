@@ -1,1 +1,20 @@
-﻿
+﻿@model Product
+<div class="bg-primary panel-body"></div>
+<div asp-validation-summary="All" class="text-danger"></div>
+<h2>Add or Update Product</h2>
+<h3>Add</h3>
+<input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+<form asp-action="AddProduct" method="post">
+    <div class="form-group">
+        <label asp-for="Name">Product Name:</label>
+        <input asp-for="Name" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="ManufactureEmail">Email:</label>
+        <input asp-for="ManufactureEmail" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="ManufacturePhone">Phone number</label>
+        <input asp-for="ManufacturePhone" class="form-control"/>
+    </div>
+</form>

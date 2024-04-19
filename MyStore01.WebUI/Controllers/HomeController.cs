@@ -44,13 +44,13 @@ namespace MyStore01.WebUI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddProduct(Product product)
+        public IActionResult AddProduct(Product product)
         {
             if(!ModelState.IsValid)
             {
                 return View();
             }
-            Product pr = context.products.FirstOrDefault(p => p.ManufactureEmail == product.ManufactureEmail && p.ProduceDate == product.ProduceDate);
+            Product? pr = context.products.FirstOrDefault(p => p.ManufactureEmail == product.ManufactureEmail && p.ProduceDate == product.ProduceDate);
                 if(pr == null)
             {
                 context.AddRange(product);
